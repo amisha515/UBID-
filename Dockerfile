@@ -24,4 +24,4 @@ RUN pip install --no-cache-dir --upgrade pip && \
 
 ENV PYTHONPATH=/app/src
 
-CMD ["streamlit", "run", "apps/dashboard.py", "--server.address=0.0.0.0", "--server.port=8601"]
+CMD ["streamlit", "run", "apps/dashboard.py", "--server.address=0.0.0.0", "--server.port=$PORT"]

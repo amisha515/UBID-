@@ -2,9 +2,14 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy dependency manifest first so Docker can cache the install layer
+COPY pyproject.toml .
 
+# Install the package and all dependencies declared in pyproject.toml
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir .
+
+# Copy the rest of the source
 COPY . .
 
 ENV PYTHONPATH=/app/src

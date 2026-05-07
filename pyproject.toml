@@ -19,11 +19,16 @@ dependencies = [
     "sqlalchemy",
     "psycopg2-binary",
     "python-dotenv",
+    "fastapi",
+    "uvicorn[standard]",
 ]
 
 [project.optional-dependencies]
 dev = ["pytest"]
 matching = ["splink"]
+
+[project.scripts]
+app = "main:app"
 
 [tool.setuptools.packages.find]
 where = ["src"]
